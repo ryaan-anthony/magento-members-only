@@ -3,10 +3,15 @@
 class Ryaan_MembersOnly_Model_Observer
 {
     /**
-     * Publicly visible price template
+     * Price template visible to non-logged in visitors
      * @var string
      */
     protected $priceTemplate = 'membersonly/catalog/price.phtml';
+
+    /**
+     * @var string
+     */
+    protected $membersOnlyFlag = 'customer/membersonly/enable';
 
     /**
      * Override the price template for non-logged in users.
@@ -18,18 +23,24 @@ class Ryaan_MembersOnly_Model_Observer
 
         $block = $event->getBlock();
 
+        // override all instances of price block
         if ($block instanceof Mage_Catalog_Block_Product_Price) {
 
-            $customerSession = $this->getCustomerSession();
+            $isMembersOnlyStore = Mage::getStoreConfigFlag($this->membersOnlyFlag);
 
-            if (!$customerSession->isLoggedIn()) {
+            // members-only is enabled for store
+            if ($isMembersOnlyStore) {
 
-                $block->setTemplate($this->priceTemplate);
+                $customerSession = $this->getCustomerSession();
 
+                // customer is not logged in
+                if (!$customerSession->isLoggedIn()) {
+
+                    $block->setTemplate($this->priceTemplate);
+
+                }
             }
-
         }
-
     }
 
     /**
