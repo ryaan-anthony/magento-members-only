@@ -3,7 +3,7 @@
 
 $this->startSetup();
 
-$attributeCode = 'agreed_to_terms';
+$attributeCode = 'member_approved';
 
 $this->addAttribute('customer', $attributeCode, [
     'label' => 'Approved',

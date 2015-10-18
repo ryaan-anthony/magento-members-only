@@ -36,11 +36,20 @@
             </modules>
         </translate>
         <events>
+            <customer_login>
+                <observers>
+                    <redirect_login_not_approved>
+                        <type>model</type>
+                        <class>membersonly/login_observer</class>
+                        <method>redirectLoginNotApproved</method>
+                    </redirect_login_not_approved>
+                </observers>
+            </customer_login>
             <core_block_abstract_to_html_before>
                 <observers>
                     <override_price_template>
                         <type>model</type>
-                        <class>membersonly/observer</class>
+                        <class>membersonly/price_observer</class>
                         <method>overridePriceTemplate</method>
                     </override_price_template>
                 </observers>
