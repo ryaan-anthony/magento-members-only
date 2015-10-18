@@ -1,7 +1,7 @@
 {
-  "name": "ryaan-anthony/MembersOnly",
+  "name": "ryaan-anthony/magento-members-only",
   "license": "MIT",
-  "homepage": "https://github.com/ryaan-anthony/MembersOnly",
+  "homepage": "https://github.com/ryaan-anthony/magento-members-only",
   "type": "magento-module",
   "require": {
     "php": ">=5.4",
