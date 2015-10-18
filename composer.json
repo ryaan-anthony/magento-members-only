@@ -1,0 +1,13 @@
+{
+  "name": "ryaan-anthony/MembersOnly",
+  "license": "MIT",
+  "homepage": "https://github.com/ryaan-anthony/MembersOnly",
+  "type": "magento-module",
+  "require": {
+    "php": ">=5.4",
+    "magento-hackathon/magento-composer-installer": "*"
+  },
+  "authors": [
+    { "name": "Ryan Tulino", "email": "rtulino@ebay.com" }
+  ]
+}

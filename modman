@@ -1,0 +1,9 @@
+# Core
+src/app/code/community/Ryaan/MembersOnly/* app/code/community/Ryaan/MembersOnly/
+src/app/etc/modules/MembersOnly.xml app/etc/modules/
+
+# Views
+src/app/design/frontend/base/default/template/membersonly/* app/design/frontend/base/default/template/membersonly/
+
+# Translations
+src/app/locale/en_US/Ryaan_MembersOnly.csv app/locale/en_US/
