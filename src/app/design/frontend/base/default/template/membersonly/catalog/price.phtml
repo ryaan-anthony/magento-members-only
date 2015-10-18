@@ -1,0 +1,10 @@
+<?php
+/**
+ * @var Mage_Catalog_Block_Product_Price $this
+ */
+?>
+<?php
+$loginMessage = Mage::helper('membersonly')->__('LOGIN_TO_SEE_PRICE');
+$loginUrl = Mage::getUrl('customer/account/login');
+?>
+<p><?php echo sprintf($loginMessage, $loginUrl) ?></p>

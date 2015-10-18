@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ryaan_MembersOnly>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Ryaan_MembersOnly>
+    </modules>
+</config>
