@@ -4,14 +4,18 @@ class Ryaan_MembersOnly_Block_Price_Clone extends Mage_Catalog_Block_Product_Vie
 {
     use Ryaan_MembersOnly_Block_TOverride;
 
-    const NAME_IN_LAYOUT = 'product.clone_prices';
+    protected $rewriteBlocks = [
+        'product.clone_prices',
+        'product.info.addtocart',
+        'product.info.addto'
+    ];
 
     /**
      * Handle the non-member view
      */
     protected function handleGuestView()
     {
-        if ($this->getNameInLayout() == self::NAME_IN_LAYOUT) {
+        if (in_array($this->getNameInLayout(), $this->rewriteBlocks)) {
             $this->setTemplate(null);
         }
     }
