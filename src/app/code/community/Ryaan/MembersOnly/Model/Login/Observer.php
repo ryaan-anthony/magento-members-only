@@ -1,7 +1,54 @@
 <?php
 
-class Ryaan_MembersOnly_Model_Login_Observer extends Ryaan_MembersOnly_Model_Observer
+class Ryaan_MembersOnly_Model_Login_Observer
 {
+    /**
+     * @var Ryaan_MembersOnly_Helper_Config
+     */
+    protected $config;
+
+    /**
+     * @var Ryaan_MembersOnly_Helper_Data
+     */
+    protected $helper;
+
+    /**
+     * Initialize the class
+     * @param array
+     */
+    public function __construct(array $args = [])
+    {
+        list($this->config, $this->helper) = $this->checkTypes(
+            $this->nullCoalesce($args, 'config', Mage::helper('membersonly/config')),
+            $this->nullCoalesce($args, 'helper', Mage::helper('membersonly'))
+        );
+    }
+
+    /**
+     * Return the value at field in array if it exists. Otherwise, use the
+     * default value.
+     * @param  array
+     * @param  string|int
+     * @param  mixed
+     * @return mixed
+     */
+    protected function nullCoalesce(array $arr, $field, $default)
+    {
+        return isset($arr[$field]) ? $arr[$field] : $default;
+    }
+
+    /**
+     * Validate constructor parameters.
+     * @param Ryaan_MembersOnly_Helper_Config
+     * @param Ryaan_MembersOnly_Helper_Data
+     * @return array
+     */
+    protected function checkTypes(
+        Ryaan_MembersOnly_Helper_Config $config,
+        Ryaan_MembersOnly_Helper_Data $helper
+    ) {
+        return func_get_args();
+    }
 
     /**
      * Determine if customer has been approved and log them out with a notice
@@ -13,7 +60,7 @@ class Ryaan_MembersOnly_Model_Login_Observer extends Ryaan_MembersOnly_Model_Obs
         $event = $observer->getEvent();
 
         // members-only is enabled for store
-        if ($this->isMembersOnlyStore()) {
+        if ($this->config->isMembersOnlyStore()) {
 
             /** @var Mage_Customer_Model_Customer $customer */
             $customer = $event->getCustomer();
@@ -26,19 +73,11 @@ class Ryaan_MembersOnly_Model_Login_Observer extends Ryaan_MembersOnly_Model_Obs
 
                 $customerSession->renewSession();
 
-                $this->getHelper()->displayNotice('CUSTOMER_NOT_APPROVED');
+                $this->helper->displayNotice('CUSTOMER_NOT_APPROVED');
 
             }
 
         }
-    }
-
-    /**
-     * @return Ryaan_MembersOnly_Helper_Data
-     */
-    protected function getHelper()
-    {
-        return Mage::helper('membersonly');
     }
 
     /**

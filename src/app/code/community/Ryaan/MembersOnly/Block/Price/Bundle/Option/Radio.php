@@ -1,0 +1,6 @@
+<?php
+
+class Ryaan_MembersOnly_Block_Price_Bundle_Option_Radio extends Mage_Bundle_Block_Catalog_Product_View_Type_Bundle_Option_Radio
+{
+    use Ryaan_MembersOnly_Block_Price_Bundle_TOption;
+}

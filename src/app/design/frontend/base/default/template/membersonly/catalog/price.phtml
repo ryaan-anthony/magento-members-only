@@ -1,10 +1,5 @@
 <?php
-/**
- * @var Mage_Catalog_Block_Product_Price $this
- */
+/** @var Ryaan_MembersOnly_Helper_Data $helper */
+$helper = Mage::helper('membersonly');
 ?>
-<?php
-$loginMessage = Mage::helper('membersonly')->__('LOGIN_TO_SEE_PRICE');
-$loginUrl = Mage::getUrl('customer/account/login');
-?>
-<p><?php echo sprintf($loginMessage, $loginUrl) ?></p>
+<p><?php echo $helper->getLoginMessage() ?></p>
